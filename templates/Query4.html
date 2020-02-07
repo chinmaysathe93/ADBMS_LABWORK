@@ -1,0 +1,26 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+  <h1>Query 4</h1>
+  <br>
+  <h3>Take a roll number, name and department name, and insert a new student record with tot_creds set to 0. Make sure you catch exceptions and report them (and test it with an incorrect department name, to see what happens when a foreign key constraint is violated, and similarly with a duplicate roll number, to see what happens when a primary key constraint is violated). Make sure also to close connections, even if there is an exception.</h3>
+  <br>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form action="" method="POST">
+    <div class="form-group">
+      {{render_field(form.rno,class_ = 'form-control')}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.name,class_ = "form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.dept_name,class_ = "form-control")}}
+    </div>
+    <div class="form-group"
+      <label for="disabledInput" class="col-sm-2 control-label">Total Credits</label>
+      <input class="form-control" id="disabledInput" type="0" disabled value="0">
+    </div>
+    <p><input type="submit" value="Submit" class = "btn btn-primary"></p>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html'%}
+
+
+{% block body %}
+  <h1>Query 3</h1>
+  <br>
+  <h3>Show all students with two or more fail grades; no need to show the courses they have failed, and I don't care if they passed the course subsequently.</h3>
+  <br>
+  <br>
+  <h1>Failed Students :</h1>
+  <br>
+  {%if msg!='Error Occured' %}
+    <table class = "table table-striped ">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      {% for stu in students %}
+        <tr>
+          <td>{{stu.ID}}</td>
+          <td>{{stu.name}}</td>
+        </tr>
+       {% endfor %}
+    </table>
+  {% endif %}
+
+{% endblock %}

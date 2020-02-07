@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}
+
+
+{% block body %}
+  <h1>Query 1</h1>
+  <br>
+  <h3> Accept a roll number, and display the following data about the student: name, department, and all courses taken, in tabular form: list the course id, title, credits and grade (show a blank if the grade is null).</h3>
+  <br>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form action="" method="POST">
+    <div class="form-group">
+      {{render_field(form.rno,class_ = 'form-control')}}
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Student Name <h5>{{form.name}}</h5></label>
+        <label class="control-label col-sm-2">Department Name <h5>{{form.dept_name}}</h5></label>
+
+      <table class = "table table-striped table-hover">
+        <tr>
+          <th>Course ID</th>
+          <th>Title</th>
+          <th>Credits</th>
+          <th>Grade</th>
+        </tr>
+        {% for cour in form.courses %}
+          <tr>
+            <td>{{cour.course_id}}</td>
+            <td>{{cour.title}}</td>
+            <td>{{cour.credits}}</td>
+            {%if cour.grade==None%}
+              <td></td>
+            {%else%}
+              <td>{{cour.grade}}</td>
+            {%endif%}
+          </tr>
+         {% endfor %}
+      </table>
+    </div>
+    <p><input type="submit" value="Submit" class = "btn btn-primary"></p>
+  </form>
+
+{% endblock %}

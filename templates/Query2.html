@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+
+{% block body %}
+  <h1>Query 2</h1>
+  <br>
+  <h3>Accept a word, and find all courses whose title contains that word</h3>
+  <br>
+  {% from "includes/_formhelpers.html" import render_field %}
+    <form action="" method="POST">
+      <div class="form-group">
+        {{render_field(form.word,class_ = 'form-control')}}
+      </div>
+
+      <table class = "table table-striped ">
+        <tr>
+          <th>Course ID</th>
+          <th>Title</th>
+        </tr>
+        {% for sub in form.subjects %}
+          <tr>
+            <td>{{sub.course_id}}</td>
+            <td>{{sub.title}}</td>
+          </tr>
+         {% endfor %}
+      </table>
+      <p><input type="submit" value="Submit" class = "btn btn-primary"></p>
+    </form>
+{% endblock %}
